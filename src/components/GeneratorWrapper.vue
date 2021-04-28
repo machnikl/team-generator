@@ -1,18 +1,18 @@
 <template>
   <v-container class="mainContainer">
-    <v-row class="playerContainer">
+    <v-row class="logoContainer">
       <v-col cols="12">
-        <v-row>
-          <h1 class="ma-3">Team Picker</h1>
-        </v-row>
+        <v-img
+          :src="require('../assets/logo2.svg')"
+          class="mt-6"
+          contain
+          height="80"
+        />
       </v-col>
     </v-row>
     <v-row>
       <v-col cols="12">
-        <h2 class="text-center">
-          Hello! <br />
-          Please add Players to generate Teams:
-        </h2>
+        <h2 class="text-center">Add Players:</h2>
         <v-row class="justify-center">
           <v-col cols="auto" class="my-auto">
             <v-text-field
@@ -23,8 +23,8 @@
               v-model="newPlayerName"
             ></v-text-field>
           </v-col>
-          <v-col cols="auto">
-            <v-btn class="mx-2 btnStyle" fab dark @click="addPlayer">
+          <v-col cols="auto" class="my-auto">
+            <v-btn class="mx-2 btnStyle" fab small dark @click="addPlayer">
               <v-icon dark> mdi-plus </v-icon>
             </v-btn>
           </v-col>
@@ -34,6 +34,12 @@
     <v-row>
       <v-col cols="12">
         <v-row>
+          <v-img
+            :src="require('../assets/team.svg')"
+            class="mt-6"
+            contain
+            height="80"
+          />
           <Avatar v-for="player in players" :text="player" :key="player" />
         </v-row>
       </v-col>
@@ -92,8 +98,8 @@ export default {
   color: white;
 }
 
-.playerContainer {
-  height: 30vh;
+.logoContainer {
+  height: 35vh;
 }
 
 h1 {
@@ -102,6 +108,7 @@ h1 {
 
 h2 {
   font-size: 2em;
+  font-weight: normal;
   margin-bottom: 28px;
 }
 

@@ -19,6 +19,7 @@ export default {
   background: transparent !important;
   border: 3px solid white !important;
   text-transform: uppercase;
+  animation: expand 0.5s ease-in-out;
 }
 
 @keyframes expand {
