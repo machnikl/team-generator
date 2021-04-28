@@ -10,7 +10,7 @@
         />
       </v-col>
     </v-row>
-    <v-row class="mb-4">
+    <v-row class="mb-8">
       <v-col cols="12">
         <h2 class="text-center">Add Players:</h2>
         <v-row class="justify-center">
@@ -46,8 +46,8 @@
         </v-row>
       </v-col>
     </v-row>
-    <v-row justify="center" class="mt-10">
-      <v-btn>Generate Teams</v-btn>
+    <v-row v-if="players.length > 0" justify="center" class="mt-10">
+      <v-btn @click="generateTeams">Generate Teams</v-btn>
     </v-row>
   </v-container>
 </template>
@@ -64,8 +64,8 @@ export default {
       newPlayerName: "",
       players: [],
       teams: [],
-      numberOfTeams: null,
-      numberOfPlayersPerTeam: null,
+      numberOfTeams: 2,
+      numberOfPlayersPerTeam: 2,
     };
   },
   methods: {
@@ -73,6 +73,20 @@ export default {
       let shortName = this.newPlayerName.substring(0, 3);
       this.players.push(shortName);
       this.newPlayerName = "";
+    },
+    generateTeams() {
+      for (let i = 0; i < this.numberOfTeams; i++) {
+        this.teams.push([]);
+      }
+      for (let i = 0; i < this.numberOfPlayersPerTeam; i++) {
+        for (let j = 0; j < this.numberOfTeams; j++) {
+          const randomIndex = Math.floor(Math.random() * this.players.length);
+          this.teams[j].push(this.players[randomIndex]);
+          this.players.splice(randomIndex, 1);
+        }
+        console.log("Players:");
+        console.log(this.teams);
+      }
     },
   },
 };
@@ -104,7 +118,7 @@ export default {
 }
 
 .logoContainer {
-  height: 25vh;
+  height: 22vh;
 }
 
 h1 {
@@ -132,7 +146,35 @@ h3 {
   height: 40vh;
   margin-left: 5px;
   margin-right: 5px;
-  border: 5px solid white;
-  border-radius: 45px;
+
+  background-image: linear-gradient(to right, white 100%, white 100%),
+    linear-gradient(to bottom, white 100%, white 100%),
+    linear-gradient(to right, white 100%, white 100%),
+    linear-gradient(to bottom, white 100%, white 100%);
+  background-size: 100% 5px, 5px 100%, 100% 5px, 5px 100%;
+  background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+  animation: bg 2.25s cubic-bezier(0.19, 1, 0.22, 1) 1;
+  animation-play-state: running;
+}
+
+@keyframes bg {
+  0% {
+    background-size: 0 3px, 5px 0, 0 5px, 5px 0;
+  }
+  25% {
+    background-size: 100% 5px, 5px 0, 0 5px, 5px 0;
+  }
+  50% {
+    background-size: 100% 5px, 5px 100%, 0 5px, 5px 0;
+  }
+  75% {
+    background-size: 100% 5px, 5px 100%, 100% 5px, 5px 0;
+  }
+  100% {
+    background-size: 100% 5px, 5px 100%, 100% 5px, 5px 100%;
+  }
+}
+
+div {
 }
 </style>
