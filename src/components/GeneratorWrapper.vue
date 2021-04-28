@@ -11,7 +11,14 @@
         </v-row>
       </div>
       <div v-if="phase === 2" key="phase2">
-        <TeamNumberChooser :players="players" @changePhase="changePhase" />
+        <TeamNumberChooser
+          :players="players"
+          @changePhase="changePhase"
+          @generatedTeams="generatedTeams"
+        />
+      </div>
+      <div v-if="phase === 3" key="phase3">
+        <PlayerSelectionDisplay :teams="teams" />
       </div>
     </transition>
   </v-container>
@@ -21,17 +28,20 @@
 import LogoContainer from "@/components/LogoContainer";
 import AddPlayerLobby from "@/components/AddPlayerLobby";
 import TeamNumberChooser from "@/components/TeamNumberChooser";
+import PlayerSelectionDisplay from "@/components/PlayerSelectionDisplay";
 
 export default {
   components: {
     LogoContainer,
     AddPlayerLobby,
     TeamNumberChooser,
+    PlayerSelectionDisplay,
   },
   data() {
     return {
-      phase: 2,
+      phase: 1,
       players: [],
+      teams: [],
     };
   },
   methods: {
@@ -44,6 +54,10 @@ export default {
     },
     changePhase(phase) {
       this.phase = phase;
+    },
+    generatedTeams(teams) {
+      this.teams = teams;
+      this.phase = 3;
     },
   },
 };

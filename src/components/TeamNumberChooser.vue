@@ -1,30 +1,34 @@
 <template>
   <div>
     <h1 class="text-center">Teams Configurator</h1>
-    <h2 class="text-center">
-      How many teams?
-      <v-icon color="white" class="headerIcon">mdi-account-group</v-icon>
-    </h2>
+    <h2 class="text-center">How many teams?</h2>
     <div class="numberChooserContainer">
       <v-btn icon class="arrowStyle" @click="numberOfTeams--">
-        <v-icon color="white">mdi-arrow-left-bold</v-icon>
+        <v-icon color="white">mdi-minus-circle</v-icon>
       </v-btn>
-      <span class="numberStyle px-4">{{ numberOfTeams }}</span>
+      <span class="numberStyle pl-7"
+        ><span>{{ numberOfTeams }}</span>
+        <v-icon color="white" class="headerIcon"
+          >mdi-account-group</v-icon
+        ></span
+      >
       <v-btn icon class="arrowStyle" @click="numberOfTeams++">
-        <v-icon color="white">mdi-arrow-right-bold</v-icon>
+        <v-icon color="white">mdi-plus-circle</v-icon>
       </v-btn>
     </div>
-    <h2 class="text-center">
-      Players per Team?
-      <v-icon color="white" class="headerIcon">mdi-account-question</v-icon>
-    </h2>
+    <h2 class="text-center">Players per Team?</h2>
     <div class="numberChooserContainer">
       <v-btn icon class="arrowStyle" @click="numberOfPlayersPerTeam--">
-        <v-icon color="white">mdi-arrow-left-bold</v-icon>
+        <v-icon color="white">mdi-minus-circle</v-icon>
       </v-btn>
-      <span class="numberStyle px-4">{{ numberOfPlayersPerTeam }}</span>
+      <span class="numberStyle pl-7"
+        ><span>{{ numberOfPlayersPerTeam }}</span>
+        <v-icon color="white" class="headerIcon"
+          >mdi-account-question</v-icon
+        ></span
+      >
       <v-btn icon class="arrowStyle" @click="numberOfPlayersPerTeam++">
-        <v-icon color="white">mdi-arrow-right-bold</v-icon>
+        <v-icon color="white">mdi-plus-circle</v-icon>
       </v-btn>
     </div>
     <v-row justify="space-around" class="mt-8">
@@ -67,7 +71,7 @@ export default {
         console.log(this.teams);
         console.log(this.players);
       }
-      this.$emit("changePhase", 3);
+      this.$emit("generatedTeams", this.teams);
     },
     back() {
       this.$emit("changePhase", 1);
@@ -96,6 +100,9 @@ h2 {
 
 .headerIcon {
   padding-left: 8px;
-  font-size: 38px;
+  font-size: 24px;
+  position: relative;
+  left: -11px;
+  bottom: 40px;
 }
 </style>
