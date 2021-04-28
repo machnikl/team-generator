@@ -1,67 +1,36 @@
 <template>
   <v-container class="mainContainer">
-    <v-row class="logoContainer">
-      <v-col cols="12">
-        <v-img
-          :src="require('../assets/logo2.svg')"
-          class="mt-6"
-          contain
-          height="80"
-        />
-      </v-col>
-    </v-row>
-    <v-row class="mb-8">
-      <v-col cols="12">
-        <h2 class="text-center">Add Players:</h2>
-        <v-row class="justify-center">
-          <v-col cols="auto" class="my-auto">
-            <v-text-field
-              label="Nickname"
-              solo
-              hide-details
-              @keyup.enter.native="addPlayer"
-              v-model="newPlayerName"
-            ></v-text-field>
-          </v-col>
-          <v-col cols="auto" class="my-auto">
-            <v-btn class="mx-2 btnStyle" fab small dark @click="addPlayer">
-              <v-icon dark> mdi-plus </v-icon>
-            </v-btn>
-          </v-col>
+    <LogoContainer />
+    <transition name="slide-fade" mode="out-in">
+      <div v-if="phase === 1" key="phase1">
+        <AddPlayerLobby @newPlayer="newPlayerAdded" />
+        <v-row justify="center" class="mt-8">
+          <v-btn @click="generateTeams" :disabled="players.length < 2"
+            >Generate Teams</v-btn
+          >
         </v-row>
-      </v-col>
-    </v-row>
-    <v-row class="bottomContainer">
-      <v-col cols="12">
-        <v-row>
-          <v-img
-            :src="require('../assets/team.svg')"
-            class="mt-6"
-            contain
-            height="80"
-          />
-        </v-row>
-        <v-row>
-          <Avatar v-for="player in players" :text="player" :key="player" />
-        </v-row>
-      </v-col>
-    </v-row>
-    <v-row v-if="players.length > 0" justify="center" class="mt-10">
-      <v-btn @click="generateTeams">Generate Teams</v-btn>
-    </v-row>
+      </div>
+      <div v-if="phase === 2" key="phase2">
+        <TeamNumberChooser />
+      </div>
+    </transition>
   </v-container>
 </template>
 
 <script>
-import Avatar from "@/components/Avatar";
+import LogoContainer from "@/components/LogoContainer";
+import AddPlayerLobby from "@/components/AddPlayerLobby";
+import TeamNumberChooser from "@/components/TeamNumberChooser";
 
 export default {
   components: {
-    Avatar,
+    LogoContainer,
+    AddPlayerLobby,
+    TeamNumberChooser,
   },
   data() {
     return {
-      newPlayerName: "",
+      phase: 1,
       players: [],
       teams: [],
       numberOfTeams: 2,
@@ -69,10 +38,9 @@ export default {
     };
   },
   methods: {
-    addPlayer() {
-      let shortName = this.newPlayerName.substring(0, 3);
-      this.players.push(shortName);
-      this.newPlayerName = "";
+    newPlayerAdded(newPlayer) {
+      this.players.push(newPlayer);
+      console.log(this.players);
     },
     generateTeams() {
       let playersCopy = [...this.players];
@@ -89,6 +57,7 @@ export default {
         console.log(this.teams);
         console.log(this.players);
       }
+      this.phase = 2;
     },
   },
 };
@@ -119,64 +88,20 @@ export default {
   color: white;
 }
 
-.logoContainer {
-  height: 22vh;
+.slide-fade-enter-active {
+  transition: all 0.3s ease;
+}
+.slide-fade-leave-active {
+  transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
+}
+.slide-fade-enter {
+  transform: translateX(40px);
+  opacity: 0;
 }
 
-h1 {
-  font-size: 1.2em;
-}
-
-h2 {
-  font-size: 2em;
-  font-weight: normal;
-  margin-bottom: 28px;
-}
-
-h3 {
-  font-size: 1.6em;
-  color: white;
-  margin-bottom: 14px;
-}
-
-.btnStyle {
-  border: 3px solid white;
-  background-color: transparent !important;
-}
-
-.bottomContainer {
-  height: 40vh;
-  margin-left: 5px;
-  margin-right: 5px;
-
-  background-image: linear-gradient(to right, white 100%, white 100%),
-    linear-gradient(to bottom, white 100%, white 100%),
-    linear-gradient(to right, white 100%, white 100%),
-    linear-gradient(to bottom, white 100%, white 100%);
-  background-size: 100% 5px, 5px 100%, 100% 5px, 5px 100%;
-  background-position: 0 0, 100% 0, 100% 100%, 0 100%;
-  animation: bg 2.25s cubic-bezier(0.19, 1, 0.22, 1) 1;
-  animation-play-state: running;
-}
-
-@keyframes bg {
-  0% {
-    background-size: 0 3px, 5px 0, 0 5px, 5px 0;
-  }
-  25% {
-    background-size: 100% 5px, 5px 0, 0 5px, 5px 0;
-  }
-  50% {
-    background-size: 100% 5px, 5px 100%, 0 5px, 5px 0;
-  }
-  75% {
-    background-size: 100% 5px, 5px 100%, 100% 5px, 5px 0;
-  }
-  100% {
-    background-size: 100% 5px, 5px 100%, 100% 5px, 5px 100%;
-  }
-}
-
-div {
+.slide-fade-leave-to
+  /* .slide-fade-leave-active below version 2.1.8 */ {
+  transform: translateX(-40px);
+  opacity: 0;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <v-avatar color="#133147" light size="56" class="avatarStyle ml-4 mt-4">
+    <v-avatar color="#133147" light size="56" class="avatarStyle mx-2 mt-4">
       {{ text }}
     </v-avatar>
   </transition>
