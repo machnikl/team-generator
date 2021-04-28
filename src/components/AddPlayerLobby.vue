@@ -39,6 +39,7 @@
           />
         </v-row>
         <v-row class="justify-center">
+          <h3 v-if="players.length < 1">No players added...</h3>
           <Avatar v-for="player in players" :text="player" :key="player" />
         </v-row>
       </v-col>
@@ -75,7 +76,7 @@ export default {
 
 <style scoped>
 h2 {
-  font-size: 2em;
+  font-size: 1.6em;
   font-weight: normal;
   margin-bottom: 16px;
 }

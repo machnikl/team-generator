@@ -19,6 +19,6 @@ export default {};
 
 <style scoped>
 .logoContainer {
-  height: 22vh;
+  height: 24vh;
 }
 </style>

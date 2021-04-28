@@ -5,13 +5,13 @@
       <div v-if="phase === 1" key="phase1">
         <AddPlayerLobby @newPlayer="newPlayerAdded" />
         <v-row justify="center" class="mt-8">
-          <v-btn @click="generateTeams" :disabled="players.length < 2"
+          <v-btn @click="toTeamNumberChooser" :disabled="players.length < 2"
             >Generate Teams</v-btn
           >
         </v-row>
       </div>
       <div v-if="phase === 2" key="phase2">
-        <TeamNumberChooser />
+        <TeamNumberChooser :players="players" @changePhase="changePhase" />
       </div>
     </transition>
   </v-container>
@@ -30,11 +30,8 @@ export default {
   },
   data() {
     return {
-      phase: 1,
+      phase: 2,
       players: [],
-      teams: [],
-      numberOfTeams: 2,
-      numberOfPlayersPerTeam: 2,
     };
   },
   methods: {
@@ -42,22 +39,11 @@ export default {
       this.players.push(newPlayer);
       console.log(this.players);
     },
-    generateTeams() {
-      let playersCopy = [...this.players];
-      for (let i = 0; i < this.numberOfTeams; i++) {
-        this.teams.push([]);
-      }
-      for (let i = 0; i < this.numberOfPlayersPerTeam; i++) {
-        for (let j = 0; j < this.numberOfTeams; j++) {
-          const randomIndex = Math.floor(Math.random() * playersCopy.length);
-          this.teams[j].push(playersCopy[randomIndex]);
-          playersCopy.splice(randomIndex, 1);
-        }
-        console.log("Players:");
-        console.log(this.teams);
-        console.log(this.players);
-      }
+    toTeamNumberChooser() {
       this.phase = 2;
+    },
+    changePhase(phase) {
+      this.phase = phase;
     },
   },
 };
