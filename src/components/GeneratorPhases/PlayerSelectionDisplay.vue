@@ -1,7 +1,7 @@
 <template>
   <div class="outerContainer">
     <div class="teamsWrapper">
-      <div v-for="(team, index) in teams" :key="team">
+      <div v-for="(team, index) in teams" :key="index">
         Team {{ index + 1 }}
         <div
           class="teamWrapper"

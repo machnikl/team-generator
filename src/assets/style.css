@@ -9,6 +9,11 @@
      margin-bottom: 40px;
  }
 
+ .container {
+     max-width: none !important;
+ }
+
+
  .outerContainer {
      height: 69vh;
      display: flex;
