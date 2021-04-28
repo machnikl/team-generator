@@ -1,9 +1,9 @@
 <template>
   <div class="outerContainer">
     <div style="height: 65vh">
-      <v-row class="mb-4">
+      <v-row class="mb-2">
         <v-col cols="12">
-          <h2>Add Players:</h2>
+          <h2 class="mb-2">Add Players:</h2>
           <v-row>
             <v-col cols="auto" class="my-auto">
               <v-text-field
@@ -109,7 +109,7 @@ h3 {
 }
 
 .bottomContainer {
-  height: 70%;
+  height: 75%;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
