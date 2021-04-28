@@ -75,17 +75,19 @@ export default {
       this.newPlayerName = "";
     },
     generateTeams() {
+      let playersCopy = [...this.players];
       for (let i = 0; i < this.numberOfTeams; i++) {
         this.teams.push([]);
       }
       for (let i = 0; i < this.numberOfPlayersPerTeam; i++) {
         for (let j = 0; j < this.numberOfTeams; j++) {
-          const randomIndex = Math.floor(Math.random() * this.players.length);
-          this.teams[j].push(this.players[randomIndex]);
-          this.players.splice(randomIndex, 1);
+          const randomIndex = Math.floor(Math.random() * playersCopy.length);
+          this.teams[j].push(playersCopy[randomIndex]);
+          playersCopy.splice(randomIndex, 1);
         }
         console.log("Players:");
         console.log(this.teams);
+        console.log(this.players);
       }
     },
   },
