@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import GeneratorWrapper from './components/GeneratorWrapper';
+import GeneratorWrapper from "@/components/GeneratorWrapper";
 
 export default {
   components: {
