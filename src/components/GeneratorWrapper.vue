@@ -19,9 +19,10 @@
         <v-row class="justify-center">
           <v-col cols="auto" class="my-auto">
             <v-text-field
-              label="Max"
+              label="Nickname"
               solo
               hide-details
+              @keyup.enter.native="addPlayer"
               v-model="newPlayerName"
             ></v-text-field>
           </v-col>
@@ -49,7 +50,7 @@ export default {
   data() {
     return {
       newPlayerName: "",
-      players: ["NIK", "ANN", "KAT", "SEB", "FLO"],
+      players: [],
       teams: [],
       numberOfTeams: null,
       numberOfPlayersPerTeam: null,
@@ -59,6 +60,7 @@ export default {
     addPlayer() {
       let shortName = this.newPlayerName.substring(0, 3);
       this.players.push(shortName);
+      this.newPlayerName = "";
     },
   },
 };
