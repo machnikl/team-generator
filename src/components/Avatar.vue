@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <v-avatar color="#133147" light size="56" class="avatarStyle ml-4 mt-3">
+    <v-avatar color="#133147" light size="56" class="avatarStyle ml-4 mt-4">
       {{ text }}
     </v-avatar>
   </transition>
@@ -16,10 +16,9 @@ export default {
 .avatarStyle {
   font-weight: bolder;
   letter-spacing: 2px;
-  background: #348ac7;
-  box-shadow: 20px 20px 60px #2c75a9, -20px -20px 60px #3c9fe5;
+  background: transparent !important;
+  border: 3px solid white !important;
   text-transform: uppercase;
-  animation: expand 0.5s ease-in-out;
 }
 
 @keyframes expand {
