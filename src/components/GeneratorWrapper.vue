@@ -18,7 +18,12 @@
         </h2>
         <v-row class="justify-center">
           <v-col cols="auto" class="my-auto">
-            <v-text-field label="Max" solo hide-details></v-text-field>
+            <v-text-field
+              label="Max"
+              solo
+              hide-details
+              v-model="newPlayerName"
+            ></v-text-field>
           </v-col>
           <v-col cols="auto">
             <v-btn class="mx-2 btnStyle" fab dark @click="addPlayer">
@@ -43,11 +48,18 @@ export default {
   },
   data() {
     return {
+      newPlayerName: "",
       players: ["NIK", "ANN", "KAT", "SEB", "FLO"],
       teams: [],
       numberOfTeams: null,
       numberOfPlayersPerTeam: null,
     };
+  },
+  methods: {
+    addPlayer() {
+      let shortName = this.newPlayerName.substring(0, 3);
+      this.players.push(shortName);
+    },
   },
 };
 </script>
