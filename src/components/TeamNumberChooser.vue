@@ -1,57 +1,59 @@
 <template>
-  <div>
-    <h1 class="text-center">Teams Configurator</h1>
-    <h2 class="text-center">How many teams?</h2>
-    <div class="numberChooserContainer">
-      <v-btn
-        icon
-        class="arrowStyle"
-        @click="numberOfTeams--"
-        :disabled="numberOfTeams < 3"
-      >
-        <v-icon color="white">mdi-minus-circle</v-icon>
-      </v-btn>
-      <span class="numberStyle pl-7"
-        ><span>{{ numberOfTeams }}</span>
-        <v-icon color="white" class="headerIcon"
-          >mdi-account-group</v-icon
-        ></span
-      >
-      <v-btn
-        icon
-        class="arrowStyle"
-        @click="numberOfTeams++"
-        :disabled="numberOfTeams > 3"
-      >
-        <v-icon color="white">mdi-plus-circle</v-icon>
-      </v-btn>
+  <div class="outerContainer">
+    <div>
+      <h1 class="text-center">Teams Configurator</h1>
+      <h2 class="text-center">How many teams?</h2>
+      <div class="numberChooserContainer">
+        <v-btn
+          icon
+          class="arrowStyle"
+          @click="numberOfTeams--"
+          :disabled="numberOfTeams < 3"
+        >
+          <v-icon color="white">mdi-minus-circle</v-icon>
+        </v-btn>
+        <span class="numberStyle pl-7"
+          ><span>{{ numberOfTeams }}</span>
+          <v-icon color="white" class="headerIcon"
+            >mdi-account-group</v-icon
+          ></span
+        >
+        <v-btn
+          icon
+          class="arrowStyle"
+          @click="numberOfTeams++"
+          :disabled="numberOfTeams > 3"
+        >
+          <v-icon color="white">mdi-plus-circle</v-icon>
+        </v-btn>
+      </div>
+      <h2 class="text-center">Players per Team?</h2>
+      <div class="numberChooserContainer">
+        <v-btn
+          icon
+          class="arrowStyle"
+          @click="numberOfPlayersPerTeam--"
+          :disabled="numberOfPlayersPerTeam < 2"
+        >
+          <v-icon color="white">mdi-minus-circle</v-icon>
+        </v-btn>
+        <span class="numberStyle pl-7"
+          ><span>{{ numberOfPlayersPerTeam }}</span>
+          <v-icon color="white" class="headerIcon"
+            >mdi-account-question</v-icon
+          ></span
+        >
+        <v-btn
+          icon
+          class="arrowStyle"
+          @click="numberOfPlayersPerTeam++"
+          :disabled="numberOfPlayersPerTeam > 3"
+        >
+          <v-icon color="white">mdi-plus-circle</v-icon>
+        </v-btn>
+      </div>
     </div>
-    <h2 class="text-center">Players per Team?</h2>
-    <div class="numberChooserContainer">
-      <v-btn
-        icon
-        class="arrowStyle"
-        @click="numberOfPlayersPerTeam--"
-        :disabled="numberOfPlayersPerTeam < 2"
-      >
-        <v-icon color="white">mdi-minus-circle</v-icon>
-      </v-btn>
-      <span class="numberStyle pl-7"
-        ><span>{{ numberOfPlayersPerTeam }}</span>
-        <v-icon color="white" class="headerIcon"
-          >mdi-account-question</v-icon
-        ></span
-      >
-      <v-btn
-        icon
-        class="arrowStyle"
-        @click="numberOfPlayersPerTeam++"
-        :disabled="numberOfPlayersPerTeam > 3"
-      >
-        <v-icon color="white">mdi-plus-circle</v-icon>
-      </v-btn>
-    </div>
-    <v-row justify="space-around" class="mt-8">
+    <v-row justify="space-around" align-content="center">
       <v-col cols="auto">
         <v-btn @click="back">
           <v-icon color="black" class="pr-2">mdi-arrow-left-bold</v-icon

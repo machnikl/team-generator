@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="outerContainer">
     <div class="teamsWrapper">
       <div v-for="(team, index) in teams" :key="team">
         Team {{ index }}
@@ -11,7 +11,7 @@
         </div>
       </div>
     </div>
-    <v-row justify="space-around" class="mt-1">
+    <v-row justify="space-around" align-content="center">
       <v-col cols="auto">
         <v-btn @click="back">
           <v-icon color="black" class="pr-2">mdi-arrow-left-bold</v-icon
@@ -51,7 +51,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 63vh;
+  height: 65vh;
 }
 
 .teamWrapper {

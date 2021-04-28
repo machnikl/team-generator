@@ -5,8 +5,15 @@
 }
 
  h1 {
-     font-size: 2em;
+     font-size: 34px;
      margin-bottom: 40px;
+ }
+
+ .outerContainer {
+     height: 76vh;
+     display: flex;
+     flex-direction: column;
+     justify-content: space-between;
  }
 
  .slide-fade-enter-active {
@@ -21,7 +28,7 @@
  }
 
  .slide-fade-leave-to
-     /* .slide-fade-leave-active below version 2.1.8 */ {
+{
      transform: translateX(-40px);
      opacity: 0;
  }

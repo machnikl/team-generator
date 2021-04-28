@@ -3,12 +3,10 @@
     <LogoContainer />
     <transition name="slide-fade" mode="out-in">
       <div v-if="phase === 1" key="phase1">
-        <AddPlayerLobby @newPlayer="newPlayerAdded" />
-        <v-row justify="center" class="mt-8">
-          <v-btn @click="toTeamNumberChooser" :disabled="players.length < 2"
-            >Generate Teams</v-btn
-          >
-        </v-row>
+        <AddPlayerLobby
+          @newPlayer="newPlayerAdded"
+          @changePhase="changePhase"
+        />
       </div>
       <div v-if="phase === 2" key="phase2">
         <TeamNumberChooser
@@ -49,9 +47,6 @@ export default {
       this.players.push(newPlayer);
       console.log(this.players);
     },
-    toTeamNumberChooser() {
-      this.phase = 2;
-    },
     changePhase(phase) {
       this.phase = phase;
     },
@@ -87,6 +82,7 @@ export default {
   box-sizing: border-box;
   overflow-x: hidden;
   overflow-y: hidden;
+  padding: 12px;
   color: white;
 }
 </style>
