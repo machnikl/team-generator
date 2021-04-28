@@ -40,7 +40,12 @@
         </v-row>
         <v-row class="justify-center">
           <h3 v-if="players.length < 1">No players added...</h3>
-          <Avatar v-for="player in players" :text="player" :key="player" />
+          <Avatar
+            v-for="player in players"
+            :text="player"
+            :key="player"
+            class="mt-4"
+          />
         </v-row>
       </v-col>
     </v-row>

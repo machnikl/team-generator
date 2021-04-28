@@ -18,7 +18,7 @@
         />
       </div>
       <div v-if="phase === 3" key="phase3">
-        <PlayerSelectionDisplay :teams="teams" />
+        <PlayerSelectionDisplay @changePhase="changePhase" :teams="teams" />
       </div>
     </transition>
   </v-container>
@@ -77,31 +77,16 @@ export default {
 }
 
 .mainContainer {
-  min-height: 100vh;
+  min-height: 100%;
   background: linear-gradient(132deg, #fc415a, #591bc5, #212335);
   background-size: 400% 400%;
   animation: Gradient 15s ease infinite;
   position: relative;
-  height: 100vh;
-  width: 100%;
-  overflow: hidden;
+  height: 100%;
+  width: 100vw;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: hidden;
   color: white;
-}
-
-.slide-fade-enter-active {
-  transition: all 0.3s ease;
-}
-.slide-fade-leave-active {
-  transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
-}
-.slide-fade-enter {
-  transform: translateX(40px);
-  opacity: 0;
-}
-
-.slide-fade-leave-to
-  /* .slide-fade-leave-active below version 2.1.8 */ {
-  transform: translateX(-40px);
-  opacity: 0;
 }
 </style>

@@ -1,20 +1,24 @@
 <template>
   <div>
-    <div v-for="(team, index) in teams" :key="team">
-      <div class="teamWrapper" v-bind:style="{ height: wrapperHeight + 'vh' }">
-        <Avatar v-for="member in team" :text="member" :key="member" />
+    <div class="teamsWrapper">
+      <div v-for="(team, index) in teams" :key="team">
+        Team {{ index }}
+        <div
+          class="teamWrapper"
+          v-bind:style="{ height: wrapperHeight + 'vh' }"
+        >
+          <Avatar v-for="member in team" :text="member" :key="member" />
+        </div>
       </div>
-      <v-avatar
-        v-if="index < teams.length - 1"
-        color="white"
-        light
-        size="80"
-        class="versusStyle"
-        v-bind:style="{ top: wrapperHeight + 16 + 'vh' }"
-      >
-        VS
-      </v-avatar>
     </div>
+    <v-row justify="space-around" class="mt-1">
+      <v-col cols="auto">
+        <v-btn @click="back">
+          <v-icon color="black" class="pr-2">mdi-arrow-left-bold</v-icon
+          >Back</v-btn
+        >
+      </v-col>
+    </v-row>
   </div>
 </template>
 
@@ -28,24 +32,32 @@ export default {
   props: ["teams"],
   computed: {
     wrapperHeight: function () {
-      return 70 / this.teams.length;
+      return 60 / this.teams.length - 4;
+    },
+  },
+  methods: {
+    generateTeams() {
+      this.$emit("generateTeams", true);
+    },
+    back() {
+      this.$emit("changePhase", 2);
     },
   },
 };
 </script>
 
 <style scoped>
-.teamWrapper {
-  border: 5px solid white;
+.teamsWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 63vh;
 }
 
-.versusStyle {
-  position: absolute;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%);
-  color: black;
-  font-weight: bold;
-  font-size: 24px;
+.teamWrapper {
+  display: flex;
+  border: 5px solid white;
+  justify-content: space-evenly;
+  align-items: center;
 }
 </style>
