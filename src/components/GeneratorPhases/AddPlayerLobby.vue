@@ -33,7 +33,7 @@
         <v-col cols="12">
           <v-row>
             <v-img
-              :src="require('../assets/team.svg')"
+              :src="require('../../assets/team.svg')"
               class="mt-6"
               contain
               height="80"
@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import Avatar from "@/components/Avatar";
+import Avatar from "@/components/General/Avatar";
 
 export default {
   components: {
@@ -109,7 +109,7 @@ h3 {
 }
 
 .bottomContainer {
-  height: 75%;
+  height: 69%;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -120,7 +120,7 @@ h3 {
     linear-gradient(to bottom, white 100%, white 100%);
   background-size: 100% 5px, 5px 100%, 100% 5px, 5px 100%;
   background-position: 0 0, 100% 0, 100% 100%, 0 100%;
-  animation: bottomContainer 2.25s cubic-bezier(0.19, 1, 0.22, 1) 1;
+  animation: bottomContainer 1.5s cubic-bezier(0.19, 1, 0.22, 1) 1;
   animation-play-state: running;
 }
 

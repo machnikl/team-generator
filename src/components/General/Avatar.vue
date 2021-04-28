@@ -6,7 +6,9 @@
 
 <script>
 export default {
-  props: ["text"],
+  props: {
+    text: String,
+  },
 };
 </script>
 

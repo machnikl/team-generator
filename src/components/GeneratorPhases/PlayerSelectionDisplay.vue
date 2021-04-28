@@ -11,7 +11,7 @@
         </div>
       </div>
     </div>
-    <v-row justify="space-around" align-content="center">
+    <v-row align-content="center">
       <v-col cols="auto">
         <v-btn @click="back">
           <v-icon color="black" class="pr-2">mdi-arrow-left-bold</v-icon
@@ -23,13 +23,15 @@
 </template>
 
 <script>
-import Avatar from "@/components/Avatar";
+import Avatar from "@/components/General/Avatar";
 
 export default {
   components: {
     Avatar,
   },
-  props: ["teams"],
+  props: {
+    teams: Array,
+  },
   computed: {
     wrapperHeight: function () {
       return 60 / this.teams.length - 4;
@@ -51,7 +53,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 65vh;
+  height: 63vh;
 }
 
 .teamWrapper {

@@ -23,10 +23,10 @@
 </template>
 
 <script>
-import LogoContainer from "@/components/LogoContainer";
-import AddPlayerLobby from "@/components/AddPlayerLobby";
-import TeamNumberChooser from "@/components/TeamNumberChooser";
-import PlayerSelectionDisplay from "@/components/PlayerSelectionDisplay";
+import LogoContainer from "@/components/General/LogoContainer";
+import AddPlayerLobby from "@/components/GeneratorPhases/AddPlayerLobby";
+import TeamNumberChooser from "@/components/GeneratorPhases/TeamNumberChooser";
+import PlayerSelectionDisplay from "@/components/GeneratorPhases/PlayerSelectionDisplay";
 
 export default {
   components: {

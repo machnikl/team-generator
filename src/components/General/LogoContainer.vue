@@ -3,7 +3,7 @@
     <v-row class="logoContainer">
       <v-col cols="12">
         <v-img
-          :src="require('../assets/logo2.svg')"
+          :src="require('../../assets/logo2.svg')"
           class="mt-6"
           contain
           height="80"
