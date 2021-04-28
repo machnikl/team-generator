@@ -96,6 +96,7 @@ export default {
       this.$emit("generatedTeams", this.teams);
     },
     back() {
+      this.players.length = 0;
       this.$emit("changePhase", 1);
     },
   },

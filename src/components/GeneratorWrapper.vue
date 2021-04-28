@@ -48,6 +48,9 @@ export default {
       console.log(this.players);
     },
     changePhase(phase) {
+      if (phase === 1) {
+        this.players.length = 0;
+      }
       this.phase = phase;
     },
     generatedTeams(teams) {

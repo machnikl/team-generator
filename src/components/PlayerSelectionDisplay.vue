@@ -2,7 +2,7 @@
   <div class="outerContainer">
     <div class="teamsWrapper">
       <div v-for="(team, index) in teams" :key="team">
-        Team {{ index }}
+        Team {{ index + 1 }}
         <div
           class="teamWrapper"
           v-bind:style="{ height: wrapperHeight + 'vh' }"
