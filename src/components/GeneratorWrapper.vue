@@ -10,7 +10,7 @@
         />
       </v-col>
     </v-row>
-    <v-row>
+    <v-row class="mb-4">
       <v-col cols="12">
         <h2 class="text-center">Add Players:</h2>
         <v-row class="justify-center">
@@ -31,7 +31,7 @@
         </v-row>
       </v-col>
     </v-row>
-    <v-row>
+    <v-row class="bottomContainer">
       <v-col cols="12">
         <v-row>
           <v-img
@@ -40,9 +40,14 @@
             contain
             height="80"
           />
+        </v-row>
+        <v-row>
           <Avatar v-for="player in players" :text="player" :key="player" />
         </v-row>
       </v-col>
+    </v-row>
+    <v-row justify="center" class="mt-10">
+      <v-btn>Generate Teams</v-btn>
     </v-row>
   </v-container>
 </template>
@@ -99,7 +104,7 @@ export default {
 }
 
 .logoContainer {
-  height: 35vh;
+  height: 25vh;
 }
 
 h1 {
@@ -121,5 +126,13 @@ h3 {
 .btnStyle {
   border: 3px solid white;
   background-color: transparent !important;
+}
+
+.bottomContainer {
+  height: 40vh;
+  margin-left: 5px;
+  margin-right: 5px;
+  border: 5px solid white;
+  border-radius: 45px;
 }
 </style>
