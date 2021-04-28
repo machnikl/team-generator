@@ -1,5 +1,5 @@
 <template>
-  <div class="avatarStyle mx-2">
+  <div class="avatarStyle mx-2" v-if="text">
     {{ text }}
   </div>
 </template>
