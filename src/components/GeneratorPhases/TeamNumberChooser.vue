@@ -56,9 +56,6 @@ export default {
           this.teams[j].push(playersCopy[randomIndex]);
           playersCopy.splice(randomIndex, 1);
         }
-        console.log("Players:");
-        console.log(this.teams);
-        console.log(this.players);
       }
       this.$emit("generatedTeams", this.teams);
     },

@@ -45,7 +45,6 @@ export default {
   methods: {
     newPlayerAdded(newPlayer) {
       this.players.push(newPlayer);
-      console.log(this.players);
     },
     changePhase(phase) {
       if (phase === 1) {

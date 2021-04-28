@@ -79,10 +79,9 @@ export default {
   },
   methods: {
     addPlayer() {
-      let shortName = this.newPlayerName.substring(0, 3);
-      this.players.push(shortName);
+      this.players.push(this.newPlayerName);
+      this.$emit("newPlayer", this.newPlayerName);
       this.newPlayerName = "";
-      this.$emit("newPlayer", shortName);
     },
     toTeamNumberChooser() {
       this.$emit("changePhase", 2);
